@@ -1,21 +1,3 @@
-"""import pygame
-
-pygame.init()
-screen = pygame.display.set_mode((400, 300))
-font = pygame.font.SysFont("Courier", 24)  # 모노스페이스 글꼴 설정
-text = font.render("Hello, World!", True, (255, 255, 255))
-
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    screen.fill((0, 0, 0))
-    screen.blit(text, (50, 100))
-    pygame.display.flip()
-
-pygame.quit()"""
-
 print("별 찍기")
 print("1.☆")
 print("2.★")
@@ -27,89 +9,34 @@ mode = int(input("모드를 선택하시오 :"))
 len = int(input("길이를 입력하시오 :"))
 
 if mode == 1:
-    mode = "1.☆"
+    shape = "☆"  # mode = "★"
 elif mode == 2:
-    mode = "★"
-
+    shape = "★"  # mode = "★"
 elif mode == 3:
-    mode = "#"
-elif mode == 4:
-    mode = "○"
-elif mode == 5:
-    mode = "●"
+    shape = "#"
 
-"""
-match mode:
-    case 1 | 2:
-        #start
-        
-    case 3:
-        #start
-        
+if mode == 1 or mode == 2:
+    #위
+    for i in range(len):
+        if i == 0:
+            print(" "*(len*3-1) + shape)
+        else :
+            print(" "*(len*3-(i+1)) + shape*(i+1))
+        if i+1 == len:
+            print(shape*(len*3+1))
+    #중간
+    for j in range(len//2):
+        print(" "*((j+1)*2) + shape*(len*3-2*(j+1)))
+    #아래
+    for k in range(len,0,-1):
+        print(" "*(k-1) + shape*k + " "*(5*(len-k)) + shape*k)
 
-    case 4 | 5:
-        #start
-        """
-#if mode ==1 or mode ==2:
-#mod in [1,2]
-for i in range(len):        # 1~len번째줄 / len+1줄
-    if i == 0:
-        print(" "*(len*3-(i+2)) + mode)
-    else :
-        print(" "*(len*3-(i+2)) + mode + "  "*(i-1) + mode + " "*(len*3-(i+1)))
-    if i+1 == len:
-        print(mode*(len+1) + "  "*(i) + mode*(len+1))
-#for j in range():
+if mode == 3:
+    hole = len // 3
+    for i in range(0,5):
+        hole = len//3
 
-for i in range(len):
-    if i == 0:
-        print(" " * (len * 3 - (i + 2)) + mode)
-    else:
-        print(" " * (len * 3 - (i + 2)) + mode + "  " * (i - 1) + mode + " " * (len * 3 - (i + 1)))
-    if i + 1 == len:
-        print(mode * (len + 1) + "  " * (i) + mode * (len + 1))
-
-
-
-"""
-☆☆☆☆☆
-       ☆   7,☆
-       
-             ☆ 13,☆
-            ☆☆   12,☆,0       
-           ☆  ☆     11,☆,2
-          ☆    ☆     10.☆.4 
-         ☆      ☆        9.☆.6
-☆☆☆☆☆☆        ☆☆☆☆☆☆    
-       ☆                          7     # ☆2개
-      ☆                            6    # ☆2개
-☆
-                            5
-                            4
-                            3
-                            2
-☆                            1
-                            
-1번 노란별
-2번 빨간별
-3번 파란별
-4번 검은별
-
-
-5번 노란o
-6번 빨간o
-            ☆ 12,☆
-           ☆☆   11,☆,0       
-          ☆  ☆     10,☆,2
-         ☆    ☆     9.☆.4 
-        ☆      ☆      8.☆.6
-☆☆☆☆☆        ☆☆☆☆☆ ☆,8
-   ☆    3
-      ☆ 6
-     ☆  5
-    ☆   4
-   ☆    3
-  ☆     2
-  
-   
-"""
+        if i % 2 == 0:
+            print(" " * ((hole * 2)-i) + shape + " "*(hole * 2) + shape)
+        else:
+            print(shape*len*2)
